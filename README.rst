@@ -47,13 +47,13 @@ Outputs:
 ^^^^^^^^^^^^
 
 - **all_samples_gex.h5ad:** Gene expression H5AD file, combined across all samples.
-.. raw:: html
-
-      <details>
-      <summary>Object metadata</summary>
-       all_samples_gex.h5ad contains metadata for QC metrics, including:
-         'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
-      </details>
+   
+   .. raw:: html
+         <details>
+         <summary>Object metadata</summary>
+          all_samples_gex.h5ad contains metadata for QC metrics, including:
+            'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
+         </details>
 - **all_samples_csp.h5ad:** Combined CSP H5AD file if CSP data is present.
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
@@ -69,9 +69,9 @@ Inputs:
 
 .. raw:: html
 
-   <span style="background-color:##E6A600; border-radius:8px; padding:4px 8px; font-weight:bold;">all_samples</span>
+   <p style="background-color: blue; color: white; font-weight:bold;">all_samples</p>
    
-: file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a used-supplied object (see requirements below).
+file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a used-supplied object (see requirements below).
 
 .. raw:: html
 
