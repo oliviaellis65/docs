@@ -50,7 +50,7 @@ Inputs:
 
 .. raw:: html
 
-   <p><span style="background-color: yellow; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">&bull; all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
+   <p><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">• all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
 
 .. raw:: html
 
@@ -64,7 +64,7 @@ Inputs:
 
 .. raw:: html
 
-   <span style="color:black;font-weight:bold;">&bull; workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span>
+   <span style="color:black;font-weight:bold;">• workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span>
 
 
 - **qc**
