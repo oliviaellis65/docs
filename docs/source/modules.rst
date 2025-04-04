@@ -34,6 +34,7 @@ Outputs:
           all_samples_gex.h5ad contains metadata for QC metrics, including:
             'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
          </details>
+
 - **all_samples_csp.h5ad:** Combined CSP H5AD file if CSP data is present.
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
@@ -49,9 +50,7 @@ Inputs:
 
 .. raw:: html
 
-   <p><span style="background-color: blue; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
-
-
+   <p><span style="background-color: yellow; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">&bull; all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
 
 .. raw:: html
 
@@ -61,11 +60,11 @@ Inputs:
    </details>
 
 
+
 .. raw:: html
 
-   <span style="color:gray;"><strong>workers</strong></span>: 
+   <span style="color:black;font-weight:bold;">&bull; workers</span><span>: number of workers to use for integration. Default is the number of available workers - 1.</span>
 
-number of workers to use for integration. Default is the number of available workers - 1.
 
 **Filtering (qc)**
 
