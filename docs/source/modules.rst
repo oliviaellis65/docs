@@ -113,9 +113,11 @@ Outputs
 ^^^^^^^
 
 
-## celltypist_annotate.nf
+celltypist_annotate.nf
+-------------------------
 
-Purpose: Annotates cells using CellTypist.
+Annotates cells using CellTypist.
+
 Inputs:
 ^^^^^^^^^^
 .. raw:: html
@@ -138,7 +140,9 @@ celltypist_markers.xlsx: CellTypist markers Excel file.
 
 
 
-## scanpy_to_seurat.nf
+scanpy_to_seurat.nf
+-----------------------
+
 **may need to reduce number of cells to fit inside a seurat object** Converts Scanpy objects to Seurat objects.
 
 Inputs:
