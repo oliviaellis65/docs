@@ -49,8 +49,7 @@ Inputs:
 
 .. raw:: html
 
-   <span style="background-color: blue; color: white; font-weight:bold;"> all_samples: </span>
-   <span> file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a used-supplied object (see requirements below).</span>
+   <p><span style="background-color: blue; color: white; font-weight:bold;"> all_samples: </span><span> file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a used-supplied object (see requirements below).</span></p>
 
 .. raw:: html
 
@@ -73,11 +72,11 @@ number of workers to use for integration. Default is the number of available wor
 +===================+==================================================+==========+==============+
 | min_nFeature      | Minimum number of unique genes in a cell         | 200      | **integer**  |
 +-------------------+--------------------------------------------------+----------+--------------+
-| max_nFeature      | Maximum number of unique genes in a cell         | 2000     | **integer**. |
+| max_nFeature      | Maximum number of unique genes in a cell         | 2000     | **integer**  |
 +-------------------+--------------------------------------------------+----------+--------------+
-| min_nCount        | Minimum number of total reads in a cell          | 2000     | **integer**. |
+| min_nCount        | Minimum number of total reads in a cell          | 2000     | **integer**  |
 +-------------------+--------------------------------------------------+----------+--------------+
-| max_nCount        | Maximum number of total reads in a cell          | 10000    | **integer**. |
+| max_nCount        | Maximum number of total reads in a cell          | 10000    | **integer**  |
 +-------------------+--------------------------------------------------+----------+--------------+
 | percent_mt        | Maximum % of cell reads from mitochondrial genes | 10       | **float**    |
 +-------------------+--------------------------------------------------+----------+--------------+
