@@ -54,35 +54,60 @@ Inputs:
 
 .. raw:: html
 
-   <details>
+   <p><details>
    <summary>Click to expand</summary>
    Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
-   </details>
+   </details></p>
+
 
 
 
 .. raw:: html
 
-   <span style="color:black;font-weight:bold;">&bull; workers</span><span>: number of workers to use for integration. Default is the number of available workers - 1.</span>
+   <span style="color:black;font-weight:bold;">&bull; workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span>
 
 
-**Filtering (qc)**
+- **qc**
 
-+-------------------+--------------------------------------------------+----------+----------------+
-| Parameter         | Description                                      | Default  | Type           |
-+===================+==================================================+==========+================+
-| min_nFeature      | Minimum number of unique genes in a cell         | 200      | ``"integer"``  |
-+-------------------+--------------------------------------------------+----------+----------------+
-| max_nFeature      | Maximum number of unique genes in a cell         | 2000     | ``"integer"``  |
-+-------------------+--------------------------------------------------+----------+----------------+
-| min_nCount        | Minimum number of total reads in a cell          | 2000     | ``"integer"``  |
-+-------------------+--------------------------------------------------+----------+----------------+
-| max_nCount        | Maximum number of total reads in a cell          | 10000    | ``"integer"``  |
-+-------------------+--------------------------------------------------+----------+----------------+
-| percent_mt        | Maximum % of cell reads from mitochondrial genes | 10       | ``"float"``    |
-+-------------------+--------------------------------------------------+----------+----------------+
-| percent_ribo      | Maximum % of cell reads from ribosomal genes     | 30       | ``"float"``    |
-+-------------------+--------------------------------------------------+----------+----------------+
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | Parameter         | Description                                      | Default  | Type           |
+   +===================+==================================================+==========+================+
+   | min_nFeature      | Minimum number of unique genes in a cell         | 200      | ``"integer"``  |
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | max_nFeature      | Maximum number of unique genes in a cell         | 2000     | ``"integer"``  |
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | min_nCount        | Minimum number of total reads in a cell          | 2000     | ``"integer"``  |
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | max_nCount        | Maximum number of total reads in a cell          | 10000    | ``"integer"``  |
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | percent_mt        | Maximum % of cell reads from mitochondrial genes | 10       | ``"float"``    |
+   +-------------------+--------------------------------------------------+----------+----------------+
+   | percent_ribo      | Maximum % of cell reads from ribosomal genes     | 30       | ``"float"``    |
+   +-------------------+--------------------------------------------------+----------+----------------+
+
+
+- **batch**
+   +------------+------------------------------------------------------------------+--------------+-----------+
+   | Parameter  | Description                                                      | Default      | Type      |
+   +============+==================================================================+==============+===========+
+   | batch      | The metadata column to use as a batch variable for integration   | "sample_id"  | string    |
+   +------------+------------------------------------------------------------------+--------------+-----------+
+   | integrate  | Method used for integration-- either "harmony" or "scvi"         | "harmony"    | string    |
+   +------------+------------------------------------------------------------------+--------------+-----------+
+   | var_genes  | Number of variable genes used for batch correction               | 2000         | integer   |
+   +------------+------------------------------------------------------------------+--------------+-----------+
+
+
+- **umap**
+   +-------------+------------------------------------------------------------------+-----------+-----------+
+   | Parameter   | Description                                                      | Default   | Type      |
+   +=============+==================================================================+===========+===========+
+   | dimensions  | Number of principle components to use for clustering (1-50)      | 30        | string    |
+   +-------------+------------------------------------------------------------------+-----------+-----------+
+   | resolution  | Clustering resolution (0.1-1.5)                                  | 0.3       | float     |
+   +-------------+------------------------------------------------------------------+-----------+-----------+
+   
+   
 
 Outputs
 ^^^^^^^
@@ -92,18 +117,36 @@ Outputs
 
 Purpose: Annotates cells using CellTypist.
 Inputs:
-filtered: A filtered object.
+^^^^^^^^^^
+.. raw:: html
+
+   <p><span style="background-color: yellow; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">&bull; all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
+
+.. raw:: html
+
+   <p><details>
+   <summary>Click to expand</summary>
+   Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
+   </details></p>
+
+
 Outputs:
+^^^^^^^^^^^^
 annotated_gex.h5ad: Annotated gene expression object.
 cluster_markers.xlsx: Cluster markers Excel file.
 celltypist_markers.xlsx: CellTypist markers Excel file.
 
+
+
 ## scanpy_to_seurat.nf
-**may ned to reduce number of cells to fit inside a seurat object**
-Purpose: Converts Scanpy objects to Seurat objects.
+**may need to reduce number of cells to fit inside a seurat object** Converts Scanpy objects to Seurat objects.
+
 Inputs:
+^^^^^^^^^^
 gex: Gene expression object.
 csp: CSP object.
+
+
 Outputs:
+^^^^^^^^^^^
 annotated.rds: Annotated Seurat object.
-Each of these files contains a Nextflow process that defines specific steps in the pipeline, taking specific inputs and producing outputs essential for single-cell CITE-Seq data analysis.
