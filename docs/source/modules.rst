@@ -50,7 +50,7 @@ Inputs:
 
 .. raw:: html
 
-   <p><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">• all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
+   <p><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"><ul><li> all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
 
 .. raw:: html
 
