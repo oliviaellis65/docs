@@ -1,3 +1,5 @@
+Overview
+==========
 The pipeline schematic is pictured below. Each "pipe" represents one nextflow process. 
 A top opening in the pipe indicates a potential starting point. 
 Bottom openings are breakpoints where the user must specify necessary parameters _or_ exit the pipeline. 
