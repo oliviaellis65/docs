@@ -1,10 +1,10 @@
 # Configuration file for the Sphinx documentation builder.
 
-# -- Project information
+# -- Project inforlsmation
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'nf-ellis-scrnaseq'
+copyright = '2025, Ellis'
+author = 'Olivia Ellis'
 
 release = '0.1'
 version = '0.1.0'
