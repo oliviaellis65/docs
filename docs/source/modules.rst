@@ -46,8 +46,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
-
+   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
 
 
 
@@ -70,6 +69,7 @@ Outputs
 ^^^^^^^^^^^^
 
 .. raw:: html
+
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline;": Gene expression H5AD file, combined across all samples.</span></li></ul>
 
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline;": Combined CSP H5AD file if CSP data is present.</span></li></ul>
@@ -90,13 +90,15 @@ Outputs
 PROCESS
 ------------------
 
-.. note:
+.. note::
    Potentially separate the filtering
    Fix config params to fail
 
-Filters, integrates, and clusters data using scanpy. Parameters for each component are outlined below, and set in the **nextflow.config** file. Parameters are only *required* for the filtering step, I encourage inspecting the batch correction and umap parameters as well.
+Filters, integrates, and clusters data using scanpy. The parameters for each component step are outlined below, and set in the **nextflow.config** file. While parameters are only *required* for the filtering step, I encourage inspecting the batch correction and umap parameters as well.
 
-By default, qc parameters are left null, which **causes the pipeline to fail after the Prep/QC module is completed**. It sounds scary, but this is the desired behavior! Failing after QC allows the user to inspect quality metrics and determine appropriate thresholds at runtime. Once parameters are specified, the pipeline continues where it left off with cached temporary objects. 
+.. note::
+
+   By default, qc parameters are left null, which **causes the pipeline to fail after the Prep/QC module is completed**. It sounds scary, but this is the desired behavior! Failing after QC allows the user to inspect quality metrics and determine appropriate thresholds at runtime. Once parameters are specified, the pipeline continues where it left off with cached temporary objects. 
 
 The quality metrics used to filter cells include nFeature and nCount minima and maxima, as well as maximum values for mitochondrial and ribosomal percentage.
 
@@ -106,7 +108,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a>
+   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 
 
 
@@ -119,23 +121,20 @@ Inputs
 
 .. raw:: html
 
-   <p><details>
-   <summary>Click to expand</summary>
-   Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
-   </details></p>
+      <p><details>
+      <summary><span style="font-size: 10px;">Requirements</span></summary>
+      Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
+      </details></p>
 
 
 
 .. raw:: html
 
    <ul><li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
-
-
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
-
-*
+<!-- raw block end -->
 
    +-------------------+--------------------------------------------------+----------+----------------+
    | Parameter         | Description                                      | Default  | Type           |
@@ -199,7 +198,7 @@ Annotates cells using CellTypist.
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a>
+   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
 
 
 
@@ -239,7 +238,7 @@ Converts Scanpy objects to Seurat objects using the ``cellgeni/schard tool<https
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a>
+   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
 
 
 
