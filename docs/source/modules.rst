@@ -14,7 +14,7 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. raw:: html
 
-   <p>Inputs highlighted in <span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">yellow</span><span style="display:inline;"> are required-- others are optional.</span></p>
+   <p>Inputs highlighted in <span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">yellow</span><span style="display:inline;"> are required, others are optional.</span></p>
 
 
 .. raw:: html
