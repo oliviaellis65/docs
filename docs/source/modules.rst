@@ -1,6 +1,13 @@
 Modules
 ===========
 
+.. note::
+   For each module, check 
+      - Inputs error checking
+      - Outputs are correct
+      
+      
+
 This page describes each nextflow module, including overall purpose, inputs, and outputs. 
 
 Each module is supported by a 'core' python or R script which is *run* by a nextflow script. The source code to both files are linked under each module header.
@@ -58,26 +65,29 @@ Inputs
    Donor2_Control,~/myproject/7.2/per_sample_outs/Donor2_Control/outs
 
 
+
 Outputs
 ^^^^^^^^^^^^
 
-- **all_samples_gex.h5ad:** Gene expression H5AD file, combined across all samples.
-   
-   .. raw:: html
+.. raw:: html
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline;": Gene expression H5AD file, combined across all samples.</span></li></ul>
+
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline;": Combined CSP H5AD file if CSP data is present.</span></li></ul>
+
          <details>
          <summary>Object metadata</summary>
           all_samples_gex.h5ad contains metadata for QC metrics, including:
             'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
          </details>
 
-- **all_samples_csp.h5ad:** Combined CSP H5AD file if CSP data is present.
+
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
 
 
 .. _process:
 
-Process
+PROCESS
 ------------------
 
 .. note:
@@ -170,15 +180,20 @@ Inputs
 Outputs
 ^^^^^^^^^
 
+.. raw:: html
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;": Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;": CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
 
+- **umap_plot.png:**
+- **process.log:** 
 
 
 .. _celltypist:
 
-Annotate
+ANNOTATE
 -------------------------
 .. note:: 
-   Need to check if behavior is correct; do we really need the Qc info?
+   Need to check if behavior is correct; do we really need the QC info?
 
 Annotates cells using CellTypist.
 
@@ -204,13 +219,16 @@ Inputs
 
 Outputs
 ^^^^^^^^^^^
-- **annotated_gex.h5ad:** Annotated gene expression object. CellTypist labels are in 'cell.type'.
+
+.. raw:: html
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;": Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li></ul>
+
 - **cluster_markers.xlsx:** Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
 - **celltypist_markers.xlsx:** Markers from the cluster that were used to assign the CellTypist label.
 
 
 .. _convert:
-Convert
+CONVERT
 -----------------------
 
 .. note:: 
@@ -231,10 +249,12 @@ Inputs
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li></ul>
-- **csp:** optional CSP object.
+- **csp:** CSP object.
 
 
 
 Outputs
 ^^^^^^^^^^^
-- **annotated.rds:** Annotated Seurat object.
+- **converted.rds:** Converted Seurat object. GEX data is stored in the "RNA" assay. CSP data, if supplied, is stored in the "CSP" assay. 
+
+
