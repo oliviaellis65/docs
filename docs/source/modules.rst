@@ -70,26 +70,29 @@ Inputs:
    <ul><li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
 
 
-- **qc**
+.. raw:: html
+
+   <ul><li><span style="color:black;font-weight:bold;">qc</span><span style="display:inline;">: <i>(all parameters required)</i></span></li></ul>
+
 
    +-------------------+--------------------------------------------------+----------+----------------+
    | Parameter         | Description                                      | Default  | Type           |
    +===================+==================================================+==========+================+
-   | min_nFeature      | Minimum number of unique genes in a cell         | 200      | ``"integer"``  |
+   | min_nFeature      | Minimum number of unique genes in a cell         | 200      | ``integer``    |
    +-------------------+--------------------------------------------------+----------+----------------+
-   | max_nFeature      | Maximum number of unique genes in a cell         | 2000     | ``"integer"``  |
+   | max_nFeature      | Maximum number of unique genes in a cell         | 2000     | ``integer``    |
    +-------------------+--------------------------------------------------+----------+----------------+
-   | min_nCount        | Minimum number of total reads in a cell          | 2000     | ``"integer"``  |
+   | min_nCount        | Minimum number of total reads in a cell          | 2000     | ``integer``    |
    +-------------------+--------------------------------------------------+----------+----------------+
-   | max_nCount        | Maximum number of total reads in a cell          | 10000    | ``"integer"``  |
+   | max_nCount        | Maximum number of total reads in a cell          | 10000    | ``integer``    |
    +-------------------+--------------------------------------------------+----------+----------------+
-   | percent_mt        | Maximum % of cell reads from mitochondrial genes | 10       | ``"float"``    |
+   | percent_mt        | Maximum % of cell reads from mitochondrial genes | 10       | ``float``      |
    +-------------------+--------------------------------------------------+----------+----------------+
-   | percent_ribo      | Maximum % of cell reads from ribosomal genes     | 30       | ``"float"``    |
+   | percent_ribo      | Maximum % of cell reads from ribosomal genes     | 30       | ``float``      |
    +-------------------+--------------------------------------------------+----------+----------------+
 
 
-- **batch**
+- **batch**: *optional*
    +------------+------------------------------------------------------------------+--------------+-----------+
    | Parameter  | Description                                                      | Default      | Type      |
    +============+==================================================================+==============+===========+
@@ -101,7 +104,7 @@ Inputs:
    +------------+------------------------------------------------------------------+--------------+-----------+
 
 
-- **umap**
+- **umap**: *optional*
    +-------------+------------------------------------------------------------------+-----------+-----------+
    | Parameter   | Description                                                      | Default   | Type      |
    +=============+==================================================================+===========+===========+
