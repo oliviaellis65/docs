@@ -47,7 +47,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 .. raw:: html
 
    <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
-
+<!-- raw block end -->
 
 
 Inputs
@@ -109,7 +109,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 .. raw:: html
 
    <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
-
+<!-- raw block end -->
 
 
 Inputs
@@ -199,7 +199,7 @@ Annotates cells using CellTypist.
 .. raw:: html
 
    <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
-
+<!-- raw block end -->
 
 
 Inputs
@@ -239,6 +239,7 @@ Converts Scanpy objects to Seurat objects using the ``cellgeni/schard tool<https
 .. raw:: html
 
    <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
+<!-- raw block end -->
 
 
 
