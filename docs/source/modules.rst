@@ -48,7 +48,7 @@ Inputs
 ^^^^^^^^^^^
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> samplesheet.csv:</span><span style="display:inline;">  If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: ".../per_sample_outs/sampleA/outs". Additional columns will be added to sample metadata.</span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> samplesheet.csv</span><span style="display:inline;">:  If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: ".../per_sample_outs/sampleA/outs". Additional columns will be added to sample metadata.</span></li></ul>
 
 ::
 
@@ -82,6 +82,7 @@ Process
 
 .. note:
    Potentially separate the filtering
+   Fix config params to fail
 
 Filters, integrates, and clusters data using scanpy. Parameters for each component are outlined below, and set in the **nextflow.config** file. Parameters are only *required* for the filtering step, I encourage inspecting the batch correction and umap parameters as well.
 
@@ -104,7 +105,7 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples:</span><span style="display:inline;">  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
 
 .. raw:: html
 
@@ -122,7 +123,7 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc</span><span style="display:inline; font-weight:bold;"> <i>(all parameters required)</i></span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
 
 *
 
@@ -170,10 +171,14 @@ Outputs
 ^^^^^^^^^
 
 
+
+
 .. _celltypist:
 
 Annotate
 -------------------------
+.. note:: 
+   Need to check if behavior is correct; do we really need the Qc info?
 
 Annotates cells using CellTypist.
 
@@ -199,16 +204,20 @@ Inputs
 
 Outputs
 ^^^^^^^^^^^
-- annotated_gex.h5ad: Annotated gene expression object. CellTypist labels are in 'cell.type'.
-- cluster_markers.xlsx: Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
-- celltypist_markers.xlsx: Markers from the cluster that were used to assign the CellTypist label.
+- **annotated_gex.h5ad:** Annotated gene expression object. CellTypist labels are in 'cell.type'.
+- **cluster_markers.xlsx:** Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
+- **celltypist_markers.xlsx:** Markers from the cluster that were used to assign the CellTypist label.
 
 
 .. _convert:
 Convert
 -----------------------
 
-**may need to reduce number of cells to fit inside a seurat object**. Converts Scanpy objects to Seurat objects.
+.. note:: 
+   Add support for raw counts, CSP
+
+
+Converts Scanpy objects to Seurat objects using the ``cellgeni/schard tool<https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>``. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's ``subsample function<https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>``.
 
 .. raw:: html
 
@@ -221,12 +230,11 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex:</span><span style="display:inline;"> Gene expression object</span></li></ul>
-
-- **csp:** CSP object.
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li></ul>
+- **csp:** optional CSP object.
 
 
 
 Outputs
 ^^^^^^^^^^^
-- annotated.rds: Annotated Seurat object.
+- **annotated.rds:** Annotated Seurat object.
