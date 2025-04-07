@@ -20,7 +20,8 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 .. raw:: html
 
    Outputs highlighted in <span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.
-.. raw block end 
+
+.. block end 
 
 Jump to:
 - :ref:`QC<qc>` 
@@ -46,6 +47,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 .. raw:: html
 
    <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
+
 .. raw block end 
 
 
