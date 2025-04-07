@@ -69,17 +69,15 @@ Outputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline;": Gene expression H5AD file, combined across all samples.</span></li></ul>
-
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline;": Combined CSP H5AD file if CSP data is present.</span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples.</span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
 
          <details>
-         <summary>Object metadata</summary>
+         <summary>Requirements</summary>
           all_samples_gex.h5ad contains metadata for QC metrics, including:
             'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
          </details>
-
-
+.. fake comment
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
 
@@ -121,7 +119,7 @@ Inputs
 .. raw:: html
 
       <p><details>
-      <summary><span style="font-size: 10px;">Requirements</span></summary>
+      <summary><span style="font-size: 12px;">Requirements</span></summary>
       Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
       </details></p>
 
@@ -193,7 +191,7 @@ ANNOTATE
 .. note:: 
    Need to check if behavior is correct; do we really need the QC info?
 
-Annotates cells using CellTypist.
+Annotates cells using `CellTypist<https://www.celltypist.org/>`.
 
 .. raw:: html
 
@@ -209,10 +207,10 @@ Inputs
 
 .. raw:: html
 
-   <p><details>
-   <summary>Requirements</summary>
-   Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
-   </details></p>
+      <p><details>
+      <summary><span style="font-size: 12px; margin-left: 40px;">Requirements</span></summary>
+      Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
+      </details></p>
 
 
 Outputs
@@ -233,7 +231,7 @@ CONVERT
    Add support for raw counts, CSP
 
 
-Converts Scanpy objects to Seurat objects using the ``cellgeni/schard tool<https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>``. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's ``subsample function<https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>``.
+Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool<https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>`. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's `subsample function<https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>`.
 
 .. raw:: html
 
