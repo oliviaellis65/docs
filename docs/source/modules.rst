@@ -12,10 +12,11 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. raw:: html
 
-   Outputs highlighted in <span style="background-color: green; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.
+   Outputs highlighted in <span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.
 
 
 Jump to:
+
 - :ref:`QC<qc>` 
 - :ref:`Process<process>`
 - :ref:`Annotate<celltypist>`
@@ -38,7 +39,9 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> core</a>
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
+
+
 
 
 Inputs
@@ -80,17 +83,20 @@ Process
 .. note:
    Potentially separate the filtering
 
-Filters, integrates, and clusters data using scanpy. Parameters are outlined below and set in the nextflow.config file. 
+Filters, integrates, and clusters data using scanpy. Parameters for each component are outlined below, and set in the **nextflow.config** file. Parameters are only *required* for the filtering step, I encourage inspecting the batch correction and umap parameters as well.
 
-Filtering metrics are listed below and include nFeature and nCount minima and maxima, as well as maximum values for mitochondrial and ribosomal percentage.
+By default, qc parameters are left null, which **causes the pipeline to fail after the Prep/QC module is completed**. It sounds scary, but this is the desired behavior! Failing after QC allows the user to inspect quality metrics and determine appropriate thresholds at runtime. Once parameters are specified, the pipeline continues where it left off with cached temporary objects. 
 
-Integration may be performed using either Harmony or ScVI. The default method is harmony.
+The quality metrics used to filter cells include nFeature and nCount minima and maxima, as well as maximum values for mitochondrial and ribosomal percentage.
 
-Clustering is performed using the batch-corrected matrix. 
+Integration may be performed using either Harmony or ScVI. The default method is Harmony.
+
+Clustering is performed using the batch-corrected matrix from either ScVI or Harmony. 
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py"> core</a>
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a>
+
 
 
 Inputs
@@ -173,7 +179,8 @@ Annotates cells using CellTypist.
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py"> core</a>
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a>
+
 
 
 Inputs
@@ -205,7 +212,8 @@ Convert
 
 .. raw:: html
 
-   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py"> core</a>
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a>
+
 
 
 Inputs
