@@ -122,7 +122,7 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc</span><span style="display:inline;"> <i>(all parameters required)</i></span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc</span><span style="display:inline; font-weight:bold;"> <i>(all parameters required)</i></span></li></ul>
 
 *
 
@@ -143,7 +143,7 @@ Inputs
    +-------------------+--------------------------------------------------+----------+----------------+
 
 
-- **batch** *(optional)*
+- **batch**  *(optional)*
    +------------+------------------------------------------------------------------+--------------+-----------+
    | Parameter  | Description                                                      | Default      | Type      |
    +============+==================================================================+==============+===========+
@@ -155,7 +155,7 @@ Inputs
    +------------+------------------------------------------------------------------+--------------+-----------+
 
 
-- **umap** *(optional)*
+- **umap**   *(optional)*
    +-------------+------------------------------------------------------------------+-----------+-----------+
    | Parameter   | Description                                                      | Default   | Type      |
    +=============+==================================================================+===========+===========+
