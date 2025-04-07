@@ -41,7 +41,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
    <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> core</a>
 
 
-Inputs:
+Inputs
 ^^^^^^^^^^^
 .. raw:: html
 
@@ -55,7 +55,7 @@ Inputs:
    Donor2_Control,~/myproject/7.2/per_sample_outs/Donor2_Control/outs
 
 
-Outputs:
+Outputs
 ^^^^^^^^^^^^
 
 - **all_samples_gex.h5ad:** Gene expression H5AD file, combined across all samples.
@@ -74,7 +74,7 @@ Outputs:
 
 .. _process:
 
-process_scanpy.nf
+Process
 ------------------
 
 .. note:
@@ -93,8 +93,8 @@ Clustering is performed using the batch-corrected matrix.
    <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py"> core</a>
 
 
-Inputs:
-^^^^^^^
+Inputs
+^^^^^^^^^
 
 .. raw:: html
 
@@ -166,7 +166,7 @@ Outputs
 
 .. _celltypist:
 
-celltypist_annotate.nf
+Annotate
 -------------------------
 
 Annotates cells using CellTypist.
@@ -176,7 +176,7 @@ Annotates cells using CellTypist.
    <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py"> core</a>
 
 
-Inputs:
+Inputs
 ^^^^^^^^^^
 .. raw:: html
 
@@ -190,7 +190,7 @@ Inputs:
    </details></p>
 
 
-Outputs:
+Outputs
 ^^^^^^^^^^^
 - annotated_gex.h5ad: Annotated gene expression object. CellTypist labels are in 'cell.type'.
 - cluster_markers.xlsx: Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
@@ -198,7 +198,7 @@ Outputs:
 
 
 .. _convert:
-scanpy_to_seurat.nf
+Convert
 -----------------------
 
 **may need to reduce number of cells to fit inside a seurat object**. Converts Scanpy objects to Seurat objects.
@@ -208,7 +208,7 @@ scanpy_to_seurat.nf
    <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py"> core</a>
 
 
-Inputs:
+Inputs
 ^^^^^^^^^^
 
 .. raw:: html
@@ -219,6 +219,6 @@ Inputs:
 
 
 
-Outputs:
+Outputs
 ^^^^^^^^^^^
 - annotated.rds: Annotated Seurat object.
