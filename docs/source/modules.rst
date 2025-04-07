@@ -14,8 +14,11 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 Inputs:
 ^^^^^^^^^^^
+.. raw:: html
 
-- **samplesheet.csv:** If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: ".../per_sample_outs/sampleA/outs". Additional columns will be added to sample metadata. ::
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> samplesheet.csv:</span><span style="display:inline;">If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: ".../per_sample_outs/sampleA/outs". Additional columns will be added to sample metadata.</span></li></ul>
+
+::
 
    sample,dir,...
    Donor1_Control,~/myproject/7.2/per_sample_outs/Donor1_Control/outs,
@@ -50,7 +53,7 @@ Inputs:
 
 .. raw:: html
 
-   <p><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"><ul><li> all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
 
 .. raw:: html
 
@@ -64,7 +67,7 @@ Inputs:
 
 .. raw:: html
 
-   <span style="color:black;font-weight:bold;">• workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span>
+   <ul><li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
 
 
 - **qc**
@@ -110,7 +113,8 @@ Inputs:
    
 
 Outputs
-^^^^^^^
+^^^^^^^^^
+
 
 
 celltypist_annotate.nf
@@ -122,21 +126,21 @@ Inputs:
 ^^^^^^^^^^
 .. raw:: html
 
-   <p><span style="background-color: yellow; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">&bull; all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples:</span><span style="display:inline;">file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
 
 .. raw:: html
 
    <p><details>
-   <summary>Click to expand</summary>
-   Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
+   <summary>Requirements</summary>
+   Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
    </details></p>
 
 
 Outputs:
 ^^^^^^^^^^^^
-annotated_gex.h5ad: Annotated gene expression object.
-cluster_markers.xlsx: Cluster markers Excel file.
-celltypist_markers.xlsx: CellTypist markers Excel file.
+- annotated_gex.h5ad: Annotated gene expression object. CellTypist labels are in 'cell.type'.
+- cluster_markers.xlsx: Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
+- celltypist_markers.xlsx: Markers from the cluster that were used to assign the CellTypist label.
 
 
 
@@ -147,10 +151,16 @@ scanpy_to_seurat.nf
 
 Inputs:
 ^^^^^^^^^^
-gex: Gene expression object.
-csp: CSP object.
+
+.. raw:: html
+
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex:</span><span style="display:inline;"> Gene expression object</span></li></ul>
+
+
+- **csp:** CSP object.
+
 
 
 Outputs:
 ^^^^^^^^^^^
-annotated.rds: Annotated Seurat object.
+- annotated.rds: Annotated Seurat object.
