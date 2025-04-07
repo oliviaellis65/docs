@@ -16,6 +16,7 @@ Contents
 .. toctree::
    
    Home <self>
-   modules
    overview
+   modules
+
 
