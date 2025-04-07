@@ -3,13 +3,17 @@ Modules
 
 This page describes each nextflow module, including overall purpose, inputs, and outputs. 
 
-Each module is supported by a python or R script which is *run* by a nextflow script. The source code to both files are linked under each module header.
+Each module is supported by a 'core' python or R script which is *run* by a nextflow script. The source code to both files are linked under each module header.
 
 .. raw:: html
+
    <p>Inputs highlighted in <span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">yellow</span><span style="display:inline;"> are required-- others are optional.</span></p>
 
+
 .. raw:: html
+
    Outputs highlighted in <span style="background-color: green; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.
+
 
 Jump to:
 - :ref:`QC<qc>` 
@@ -21,7 +25,7 @@ Jump to:
 
 .. _qc:
 
-qc_scanpy.nf
+Prep and Quality Control
 --------------
 
 .. note:
@@ -29,6 +33,13 @@ qc_scanpy.nf
 
 
 Concatenates all samples from the provided samplesheet into a single .h5ad file and generates sample-level QC metrics. If CITE-Seq data is present, GEX and CSP assays are separated. Extra columns from the samplesheet are added to object metadata.
+
+
+
+.. raw:: html
+
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> core</a>
+
 
 Inputs:
 ^^^^^^^^^^^
@@ -76,6 +87,11 @@ Filtering metrics are listed below and include nFeature and nCount minima and ma
 Integration may be performed using either Harmony or ScVI. The default method is harmony.
 
 Clustering is performed using the batch-corrected matrix. 
+
+.. raw:: html
+
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py"> core</a>
+
 
 Inputs:
 ^^^^^^^
@@ -155,6 +171,11 @@ celltypist_annotate.nf
 
 Annotates cells using CellTypist.
 
+.. raw:: html
+
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py"> core</a>
+
+
 Inputs:
 ^^^^^^^^^^
 .. raw:: html
@@ -181,6 +202,11 @@ scanpy_to_seurat.nf
 -----------------------
 
 **may need to reduce number of cells to fit inside a seurat object**. Converts Scanpy objects to Seurat objects.
+
+.. raw:: html
+
+   <span style="background-color: pink; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">Scripts: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf">nextflow, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py"> core</a>
+
 
 Inputs:
 ^^^^^^^^^^
