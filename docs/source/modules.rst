@@ -82,6 +82,7 @@ Outputs
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
 
 
+
 .. _process:
 
 PROCESS
@@ -184,6 +185,7 @@ Outputs
 - **process.log:** 
 
 
+
 .. _celltypist:
 
 ANNOTATE
@@ -221,6 +223,7 @@ Outputs
 
 - **cluster_markers.xlsx:** Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
 - **celltypist_markers.xlsx:** Markers from the cluster that were used to assign the CellTypist label.
+
 
 
 .. _convert:
