@@ -27,8 +27,7 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 
 
-Jump to:
-
+Jump to:\
 - :ref:`QC<qc>` 
 - :ref:`Process<process>`
 - :ref:`Annotate<celltypist>`
@@ -51,7 +50,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
 
 .. raw block end 
 
@@ -81,12 +80,9 @@ Outputs
          <summary>Metadata</summary>
             all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
    </details>
-
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
-   
+   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
 
 .. fake comment
-
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
 - **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
 
@@ -117,7 +113,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
@@ -127,29 +123,16 @@ Inputs
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
-
-.. raw:: html
-
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
+   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
+      
    <details style="margin-left: 40px; font-size: 14px;">
       <summary>Requirements</summary>
          Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
-   </details>
+   </details><br>
 
+   <li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
 
-
-.. raw:: html
-
-   <ul><li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
-
-.. raw:: html
-
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
-
-
-.. doin stuff
-
-.. raw:: html
+   <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
 
    <div style="margin-left: 40px; font-size: 0.85em;">
      <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
@@ -200,7 +183,7 @@ Inputs
          </tr>
        </tbody>
      </table>
-   </div>
+   </div><br>
 
 
 .. old table
@@ -257,7 +240,7 @@ Inputs
             </tr>
          </tbody>
       </table>
-   </div>
+   </div><br>
 
 .. old table 
    +------------+------------------------------------------------------------------+--------------+-----------+
@@ -270,11 +253,10 @@ Inputs
    | var_genes  | Number of variable genes used for batch correction               | 2000         | integer   |
    +------------+------------------------------------------------------------------+--------------+-----------+
 
-
+\
 - **umap**   *(optional)*
 
-.. raw::html
-
+.. raw:: html
    <div style="margin-left: 40px; font-size: 0.85em;">
       <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
          <thead style="background-color: #f2f2f2;">
@@ -300,7 +282,7 @@ Inputs
             </tr>
          </tbody>
       </table>
-   </div>
+   </div><br>
 
 .. old table
    +-------------+------------------------------------------------------------------+-----------+-----------+
@@ -318,13 +300,12 @@ Outputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
+   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
+   <li><span style="font-weight:bold;">umap_plot.png:</span><span style="display:inline;"> UMAP of cells after batch correction.</span></li>
+   <li><span style="font-weight:bold;">process.log:</span><span style="display:inline;"> Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.</span></li></ul>
 
-- **umap_plot.png:** UMAP of cells after batch correction.
-- **process.log:** Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.
-
-
+\
 
 .. _celltypist:
 
@@ -346,27 +327,24 @@ Inputs
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered</span><span style="display:inline;">: file path to an .h5ad object with gene expression data combined for all samples. This can be an output from process_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
+   <details style="margin-left: 40px; font-size: 14px;">
+      <summary>Requirements</summary>
+         Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
+   </details>
 
-.. raw:: html
 
-      <p><details>
-      <summary><span style="font-size: 14px; margin-left: 40px;">Requirements</span></summary>
-      Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
-      </details></p>
 
 
 Outputs
 ^^^^^^^^^^^
-
 .. raw:: html
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;": Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li></ul>
 
-- **cluster_markers.xlsx:** Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.
-- **celltypist_markers.xlsx:** Markers from the cluster that were used to assign the CellTypist label.
-
-
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;">: Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li></ul>
+   <li><span style="font-weight:bold;">cluster_markers.xlsx:</span><span style="display:inline;"> Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.</span></li>
+   <li><span style="font-weight:bold;">celltypist_markers.xlsx:</span><span style="display:inline;"> Markers from the cluster that were used to assign the CellTypist label.</span></li>  
 
 .. _convert:
+\
 CONVERT
 -----------------------
 
@@ -382,18 +360,16 @@ Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool <https
 .. raw block end 
 
 
-
 Inputs
 ^^^^^^^^^^
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li></ul>
-   <ul><li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li></ul>
+   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li>
+   <li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li></ul>
 
 .. mycomment
 
-\
 \
 Outputs
 ^^^^^^^^^^^
