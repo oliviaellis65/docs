@@ -77,10 +77,11 @@ Outputs
 .. raw:: html
 
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
-   <details style="margin-left: 40px; font-size: 11px;">
+   <details style="margin-left: 40px; font-size: 14px;">
          <summary>Metadata</summary>
             all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
    </details>
+
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
    
 
@@ -128,10 +129,12 @@ Inputs
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
 
 .. raw:: html
-      <p><details>
-      <summary><span style="font-size: 12px; margin-left: 40px;">Requirements</span></summary>
-      Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
-      </details></p>
+
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
+   <details style="margin-left: 40px; font-size: 14px;">
+      <summary>Requirements</summary>
+         Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
+   </details>
 
 
 
@@ -314,7 +317,7 @@ Outputs
 ^^^^^^^^^
 
 .. raw:: html
-   
+
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
 
@@ -330,7 +333,7 @@ ANNOTATE
 .. note:: 
    Need to check if behavior is correct; do we really need the QC info?
 
-Annotates cells using `CellTypist<https://www.celltypist.org/>`_.
+Annotates cells using `CellTypist <https://www.celltypist.org/>`_.
 
 .. raw:: html
 
@@ -347,7 +350,7 @@ Inputs
 .. raw:: html
 
       <p><details>
-      <summary><span style="font-size: 12px; margin-left: 40px;">Requirements</span></summary>
+      <summary><span style="font-size: 14px; margin-left: 40px;">Requirements</span></summary>
       Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
       </details></p>
 
@@ -371,7 +374,7 @@ CONVERT
    Add support for raw counts, CSP
 
 
-Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool<https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>`_. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's `subsample function<https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>`_.
+Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool <https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>`_. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's `subsample function <https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>`_.
 
 .. raw:: html
 
@@ -386,10 +389,12 @@ Inputs
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li></ul>
-- **csp:** CSP object.
+   <ul><li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li></ul>
 
+.. mycomment
 
-
+\
+\
 Outputs
 ^^^^^^^^^^^
 - **converted.rds:** Converted Seurat object. GEX data is stored in the "RNA" assay. CSP data, if supplied, is stored in the "CSP" assay. 
