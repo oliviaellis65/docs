@@ -112,7 +112,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #FFEFF1; font-size: 18px; font-family: 'Roboto Slab', serif; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
