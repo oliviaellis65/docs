@@ -25,7 +25,7 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 
 Jump to:
-
+"""""""""""
 - :ref:`QC<qc>` 
 - :ref:`Process<process>`
 - :ref:`Annotate<celltypist>`
@@ -144,7 +144,7 @@ Inputs
 
 .. raw:: html
 
-   <div style="margin-left: 40px;">
+   <div style="margin-left: 40px; font-size: 0.85em;">
      <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
        <thead style="background-color: #f2f2f2;">
          <tr>
@@ -195,7 +195,7 @@ Inputs
      </table>
    </div>
 
-.. comment-out::
+.. old table
    +-------------------+--------------------------------------------------+----------+----------------+
    | Parameterz        | Description                                      | Default  | Type           |
    +===================+==================================================+==========+================+
@@ -213,7 +213,44 @@ Inputs
    +-------------------+--------------------------------------------------+----------+----------------+
 
 
+
 - **batch**  *(optional)*
+
+.. raw:: html
+   <div style="margin-left: 40px; font-size: 0.85em;">
+      <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
+         <thead style="background-color: #f2f2f2;">
+            <tr>
+               <th>Parameter</th>
+               <th>Description</th>
+               <th>Default</th>
+               <th>Type</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>batch</td>
+               <td>The metadata column to use as a batch variable for integration</td>
+               <td>"sample_id"</td>
+               <td>string</td>
+            </tr>
+            <tr>
+               <td>integrate</td>
+               <td>Method used for integration-- either "harmony" or "scvi"</td>
+               <td>"harmony"</td>
+               <td>string</td>
+            </tr>
+            <tr>
+               <td>var_genes</td>
+               <td>Number of variable genes used for batch correction</td>
+               <td>2000</td>
+               <td>integer</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
+.. old table 
    +------------+------------------------------------------------------------------+--------------+-----------+
    | Parameter  | Description                                                      | Default      | Type      |
    +============+==================================================================+==============+===========+
@@ -226,6 +263,36 @@ Inputs
 
 
 - **umap**   *(optional)*
+
+.. raw::html
+   <div style="margin-left: 40px; font-size: 0.85em;">
+      <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
+         <thead style="background-color: #f2f2f2;">
+            <tr>
+               <th>Parameter</th>
+               <th>Description</th>
+               <th>Default</th>
+               <th>Type</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>dimensions</td>
+               <td>Number of principle components to use for clustering (1-50)</td>
+               <td>30</td>
+               <td>string</td>
+            </tr>
+            <tr>
+               <td>resolution</td>
+               <td>Clustering resolution (0.1-1.5)</td>
+               <td>0.3</td>
+               <td>float</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+
+.. old table
    +-------------+------------------------------------------------------------------+-----------+-----------+
    | Parameter   | Description                                                      | Default   | Type      |
    +=============+==================================================================+===========+===========+
@@ -240,11 +307,11 @@ Outputs
 ^^^^^^^^^
 
 .. raw:: html
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;": Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;": CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
 
-- **umap_plot.png:**
-- **process.log:** 
+- **umap_plot.png:** UMAP of cells after batch correction.
+- **process.log:** Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.
 
 
 
