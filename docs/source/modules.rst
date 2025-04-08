@@ -24,12 +24,12 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. block end 
 
-/
+
 Jump to:
-* :ref:`QC<qc>` 
-* :ref:`Process<process>`
-* :ref:`Annotate<celltypist>`
-* :ref:`Convert<convert>`
+* :ref:`QC <qc>`
+* :ref:`Process <process>`
+* :ref:`Annotate <celltypist>`
+* :ref:`Convert <convert>`
 
 
 
@@ -48,7 +48,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: #D3D3D3; font-size: 18px; font-family: 'Roboto Slab', serif; color: #FF00FF; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
+   <p><span style="font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight: bold;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
    </p>
 
 .. raw block end 
@@ -59,7 +59,7 @@ Inputs
 .. raw:: html
 
    <ul>
-      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">samplesheet.csv</span><span style="display: inline;"> : If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: '.../per_sample_outs/sampleA/outs'. Additional columns will be added to sample metadata.</span></li>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">samplesheet.csv</span><span style="display:inline;"> : If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: '.../per_sample_outs/sampleA/outs'. Additional columns will be added to sample metadata.</span></li>
    </ul>
 
 
@@ -79,18 +79,15 @@ Outputs
 
    <ul>
       <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
-      <details style="margin-left: 40px; font-size: 14px;">
+      <details style="margin-left: 40px; font-size: 15px;">
             <summary>Metadata</summary>
-               all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
+               all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', etc...
       </details>
       <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li>
-   </ul>
+      <li><span style="font-weight: bold;">QC_metrics.xlsx: </span><span style="display:inline;">Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' across all samples combined.</span></li>
+      <li><span style="font-weight: bold;">QC_plot.png: </span><span style="display:inline;">For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.</span></li>
+   </ul><br>
 
-.. fake comment
-- **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
-- **QC_plot.png:** For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.
-
-.. 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
 
 .. _process:
 
@@ -117,7 +114,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
@@ -128,15 +125,13 @@ Inputs
 
    <ul>
       <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li>
-      
-      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
          
       <details style="margin-left: 40px; font-size: 14px;">
          <summary>Requirements</summary>
             Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
       </details><br>
 
-      <li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li>
+      <li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is one less than the number of available workers. This parameter can be modified in the</span><span style="font-weight:bold;"> nextflow.config file.</span></li>
       
       <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li>
    </ul>
@@ -307,7 +302,7 @@ Outputs
 .. raw:: html
 
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
-   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
+   <li><span style="background-color: #A9D069; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
    <li><span style="font-weight:bold;">umap_plot.png:</span><span style="display:inline;"> UMAP of cells after batch correction.</span></li>
    <li><span style="font-weight:bold;">process.log:</span><span style="display:inline;"> Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.</span></li></ul>
 
@@ -324,7 +319,7 @@ Annotates cells using `CellTypist <https://www.celltypist.org/>`_.
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
 .. raw block end 
 
 
@@ -351,11 +346,12 @@ Outputs
       <li><span style="font-weight:bold;">cluster_markers.xlsx:</span><span style="display:inline;"> Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.</span></li>
       <li><span style="font-weight:bold;">celltypist_markers.xlsx:</span><span style="display:inline;"> Markers from the cluster that were used to assign the CellTypist label.</span></li>  
    </ul>
+\
 
 .. _convert:
-\
+
 CONVERT
------------------------
+----------
 
 .. note:: 
    Add support for raw counts, CSP
@@ -365,7 +361,7 @@ Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool <https
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
 .. raw block end 
 
 
@@ -382,6 +378,7 @@ Inputs
 .. mycomment
 
 \
+
 Outputs
 ^^^^^^^^^^^
 - **converted.rds:** Converted Seurat object. GEX data is stored in the "RNA" assay. CSP data, if supplied, is stored in the "CSP" assay. 
