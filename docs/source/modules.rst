@@ -1,3 +1,4 @@
+===========
 Modules
 ===========
 
@@ -24,8 +25,10 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 .. block end 
 
 
+
+
 Jump to:
-"""""""""""
+
 - :ref:`QC<qc>` 
 - :ref:`Process<process>`
 - :ref:`Annotate<celltypist>`
@@ -36,7 +39,7 @@ Jump to:
 .. _qc:
 
 Prep and Quality Control
---------------
+-------------------------
 
 .. note:
    Potentially separate the prep/combination stage and the QC metric generation stage as different processes, same workflow.
@@ -48,7 +51,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
 
 .. raw block end 
 
@@ -94,6 +97,7 @@ PROCESS
 ------------------
 
 .. note::
+
    Potentially separate the filtering
    Fix config params to fail
 
@@ -112,7 +116,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: #FFEFF1; font-size: 18px; font-family: 'Roboto Slab', serif; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
@@ -195,6 +199,7 @@ Inputs
      </table>
    </div>
 
+
 .. old table
    +-------------------+--------------------------------------------------+----------+----------------+
    | Parameterz        | Description                                      | Default  | Type           |
@@ -212,11 +217,12 @@ Inputs
    | percent_ribo      | Maximum % of cell reads from ribosomal genes     | 30       | ``float``      |
    +-------------------+--------------------------------------------------+----------+----------------+
 
-
+.. more comment
 
 - **batch**  *(optional)*
 
 .. raw:: html
+
    <div style="margin-left: 40px; font-size: 0.85em;">
       <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
          <thead style="background-color: #f2f2f2;">
@@ -265,6 +271,7 @@ Inputs
 - **umap**   *(optional)*
 
 .. raw::html
+
    <div style="margin-left: 40px; font-size: 0.85em;">
       <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
          <thead style="background-color: #f2f2f2;">
@@ -307,6 +314,7 @@ Outputs
 ^^^^^^^^^
 
 .. raw:: html
+   
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li></ul>
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li></ul>
 
@@ -326,7 +334,7 @@ Annotates cells using `CellTypist<https://www.celltypist.org/>`_.
 
 .. raw:: html
 
-   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
 .. raw block end 
 
 
@@ -367,7 +375,7 @@ Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool<https:
 
 .. raw:: html
 
-   <p><span style="background-color: pink; font-size: 18px; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
+   <p><span style="background-color: #F4C2C2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
 .. raw block end 
 
 
