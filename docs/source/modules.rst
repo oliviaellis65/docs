@@ -73,25 +73,13 @@ Outputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples.</span></li></ul>
+   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
+   <details style="margin-left: 40px; font-size: 11px;">
+         <summary>Metadata</summary>
+            all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
+   </details>
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
-
-blob
-
-.. raw:: html
-
-   <details style="margin-left: 40px;">
-      <summary>nospan</summary>
-         all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
-   </details>
-
-blob blob
-.. raw:: html
-
-   <details>
-      <summary><span style="font-size: 12px; margin-left: 40px;">wspan</span></summary>
-         all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA'
-   </details>
+   
 
 .. fake comment
 
@@ -154,7 +142,60 @@ Inputs
 
 .. doin stuff
 
+.. raw:: html
 
+   <div style="margin-left: 40px;">
+     <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
+       <thead style="background-color: #f2f2f2;">
+         <tr>
+           <th>Parameter</th>
+           <th>Description</th>
+           <th>Default</th>
+           <th>Type</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>min_nFeature</td>
+           <td>Minimum number of unique genes in a cell</td>
+           <td>200</td>
+           <td><code>integer</code></td>
+         </tr>
+         <tr>
+           <td>max_nFeature</td>
+           <td>Maximum number of unique genes in a cell</td>
+           <td>2000</td>
+           <td><code>integer</code></td>
+         </tr>
+         <tr>
+           <td>min_nCount</td>
+           <td>Minimum number of total reads in a cell</td>
+           <td>2000</td>
+           <td><code>integer</code></td>
+         </tr>
+         <tr>
+           <td>max_nCount</td>
+           <td>Maximum number of total reads in a cell</td>
+           <td>10000</td>
+           <td><code>integer</code></td>
+         </tr>
+         <tr>
+           <td>percent_mt</td>
+           <td>Maximum % of cell reads from mitochondrial genes</td>
+           <td>10</td>
+           <td><code>float</code></td>
+         </tr>
+         <tr>
+           <td>percent_ribo</td>
+           <td>Maximum % of cell reads from ribosomal genes</td>
+           <td>30</td>
+           <td><code>float</code></td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+
+.. comment-out::
    +-------------------+--------------------------------------------------+----------+----------------+
    | Parameterz        | Description                                      | Default  | Type           |
    +===================+==================================================+==========+================+
