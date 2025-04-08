@@ -20,18 +20,16 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. raw:: html
 
-   Outputs highlighted in <span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.
+   Outputs highlighted in <span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.</span>
 
 .. block end 
 
-
-
-
-Jump to:\
-- :ref:`QC<qc>` 
-- :ref:`Process<process>`
-- :ref:`Annotate<celltypist>`
-- :ref:`Convert<convert>`
+/
+Jump to:
+* :ref:`QC<qc>` 
+* :ref:`Process<process>`
+* :ref:`Annotate<celltypist>`
+* :ref:`Convert<convert>`
 
 
 
@@ -50,7 +48,8 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: #F4C2C2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a></p>
+   <p><span style="background-color: #D3D3D3; font-size: 18px; font-family: 'Roboto Slab', serif; color: #FF00FF; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
+   </p>
 
 .. raw block end 
 
@@ -59,7 +58,10 @@ Inputs
 ^^^^^^^^^^^
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> samplesheet.csv</span><span style="display:inline;">:  If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: ".../per_sample_outs/sampleA/outs". Additional columns will be added to sample metadata.</span></li></ul>
+   <ul>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">samplesheet.csv</span><span style="display: inline;"> : If starting from cellranger outputs, specify the samples in the following format. "sample" is the sample name, and "dir" is the cellranger output folder containing a .h5ad file, normally in this form: '.../per_sample_outs/sampleA/outs'. Additional columns will be added to sample metadata.</span></li>
+   </ul>
+
 
 ::
 
@@ -75,12 +77,14 @@ Outputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
-   <details style="margin-left: 40px; font-size: 14px;">
-         <summary>Metadata</summary>
-            all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
-   </details>
-   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
+   <ul>
+      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
+      <details style="margin-left: 40px; font-size: 14px;">
+            <summary>Metadata</summary>
+               all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
+      </details>
+      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li>
+   </ul>
 
 .. fake comment
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
@@ -102,13 +106,13 @@ Filters, integrates, and clusters data using scanpy. The parameters for each com
 
 .. note::
 
-   By default, qc parameters are left null, which **causes the pipeline to fail after the QC module is completed**. It sounds scary, but this is the desired behavior! 
+   By default, qc parameters are left null, which **causes the pipeline to fail at the process module**. 
+   
+   It sounds scary, but this is the desired behavior! 
    Failing after QC allows the user to inspect quality metrics and determine appropriate thresholds at runtime. Once parameters are specified, the pipeline continues where it left off with cached temporary objects. 
 
-Quality metrics for filtering cells include nFeature and nCount minima and maxima, as well as maximum values for mitochondrial and ribosomal percentage.
-
-Integration may be performed using either Harmony or ScVI. The default method is Harmony.
-
+Quality metrics for filtering cells include nFeature and nCount minima and maxima, as well as maximum values for mitochondrial and ribosomal percentage.\
+Integration may be performed using either Harmony or ScVI. The default method is Harmony.\
 Clustering is performed using the batch-corrected matrix from either ScVI or Harmony. 
 
 .. raw:: html
@@ -122,17 +126,20 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
-   <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li></ul>
+   <ul>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li>
       
-   <details style="margin-left: 40px; font-size: 14px;">
-      <summary>Requirements</summary>
-         Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
-   </details><br>
+      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
+         
+      <details style="margin-left: 40px; font-size: 14px;">
+         <summary>Requirements</summary>
+            Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo'.
+      </details><br>
 
-   <li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
-
-   <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
+      <li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li>
+      
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li>
+   </ul>
 
    <div style="margin-left: 40px; font-size: 0.85em;">
      <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
@@ -224,19 +231,19 @@ Inputs
                <td>batch</td>
                <td>The metadata column to use as a batch variable for integration</td>
                <td>"sample_id"</td>
-               <td>string</td>
+               <td><code>string</code></td>
             </tr>
             <tr>
                <td>integrate</td>
                <td>Method used for integration-- either "harmony" or "scvi"</td>
                <td>"harmony"</td>
-               <td>string</td>
+               <td><code>string</code></td>
             </tr>
             <tr>
                <td>var_genes</td>
                <td>Number of variable genes used for batch correction</td>
                <td>2000</td>
-               <td>integer</td>
+               <td><code>integer</code></td>
             </tr>
          </tbody>
       </table>
@@ -253,7 +260,6 @@ Inputs
    | var_genes  | Number of variable genes used for batch correction               | 2000         | integer   |
    +------------+------------------------------------------------------------------+--------------+-----------+
 
-\
 - **umap**   *(optional)*
 
 .. raw:: html
@@ -272,13 +278,13 @@ Inputs
                <td>dimensions</td>
                <td>Number of principle components to use for clustering (1-50)</td>
                <td>30</td>
-               <td>string</td>
+               <td><code>string</code></td>
             </tr>
             <tr>
                <td>resolution</td>
                <td>Clustering resolution (0.1-1.5)</td>
                <td>0.3</td>
-               <td>float</td>
+               <td><code>float</code></td>
             </tr>
          </tbody>
       </table>
@@ -326,12 +332,13 @@ Inputs
 ^^^^^^^^^^
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered</span><span style="display:inline;">: file path to an .h5ad object with gene expression data combined for all samples. This can be an output from process_scanpy.nf, or a user-supplied object (see requirements below).</span></li></ul>
-   <details style="margin-left: 40px; font-size: 14px;">
-      <summary>Requirements</summary>
-         Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
-   </details>
-
+   <ul>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered</span><span style="display:inline;">: file path to an .h5ad object with gene expression data combined for all samples. This can be an output from process_scanpy.nf, or a user-supplied object (see requirements below).</span></li>
+      <details style="margin-left: 40px; font-size: 14px;">
+         <summary>Requirements</summary>
+            Object must contain the following metadata columns: 'sample_id', 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'leiden'.
+      </details>
+   </ul>
 
 
 
@@ -339,9 +346,11 @@ Outputs
 ^^^^^^^^^^^
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;">: Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li></ul>
-   <li><span style="font-weight:bold;">cluster_markers.xlsx:</span><span style="display:inline;"> Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.</span></li>
-   <li><span style="font-weight:bold;">celltypist_markers.xlsx:</span><span style="display:inline;"> Markers from the cluster that were used to assign the CellTypist label.</span></li>  
+   <ul>
+      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;">: Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li>
+      <li><span style="font-weight:bold;">cluster_markers.xlsx:</span><span style="display:inline;"> Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.</span></li>
+      <li><span style="font-weight:bold;">celltypist_markers.xlsx:</span><span style="display:inline;"> Markers from the cluster that were used to assign the CellTypist label.</span></li>  
+   </ul>
 
 .. _convert:
 \
@@ -365,8 +374,10 @@ Inputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li>
-   <li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li></ul>
+   <ul>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li>
+      <li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li>
+   </ul>
 
 .. mycomment
 
