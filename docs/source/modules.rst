@@ -80,15 +80,16 @@ Outputs
 .. raw:: html
 
    <details style="margin-left: 40px;">
-      <summary>Requirements no span</summary>
-       all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
+      <summary>nospan</summary>
+         all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 
    </details>
+
 
 .. raw:: html
 
-   <details style="margin-left: 40px;">
-      <summary><span style="font-size: 12px; margin-left: 40px;">Requirements w span</span></summary>
-       all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA'
+   <details>
+      <summary><span style="font-size: 12px; margin-left: 40px;">wspan</span></summary>
+         all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA'
    </details>
 
 .. fake comment
