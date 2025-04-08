@@ -74,12 +74,16 @@ Outputs
 
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples.</span></li></ul>
    <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li></ul>
-
    
-      <details>
-         <span style="font-size: 12px; margin-left: 40px;"><summary>Requirements</summary></span>
+      <details style="margin-left: 40px;">
+         <summary>Requirements no span</summary>
           all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
       </details>
+
+   <details style="margin-left: 40px;">
+            <summary><span style="font-size: 12px; margin-left: 40px;">Requirements w span</span></summary>
+             all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', 'log1p_n_genes_by_counts', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt',  'total_counts_ribo', 'log1p_total_counts_ribo',  'total_counts_hb', 'log1p_total_counts_hb'
+   </details>
 
 .. fake comment
 - **QC_metrics.xlsx:** Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' *across all samples combined*.
@@ -133,14 +137,17 @@ Inputs
 .. raw:: html
 
    <ul><li><span style="color:black;font-weight:bold;">workers</span><span style="display:inline;">: number of workers to use for integration. Default is the number of available workers - 1.</span></li></ul>
+
 .. raw:: html
 
    <ul><li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">qc <i>(all parameters required)</i></span></li></ul>
-.. raw block end 
+
+
+.. doin stuff
 
 
    +-------------------+--------------------------------------------------+----------+----------------+
-   | Parameter         | Description                                      | Default  | Type           |
+   | Parameterz        | Description                                      | Default  | Type           |
    +===================+==================================================+==========+================+
    | min_nFeature      | Minimum number of unique genes in a cell         | 200      | ``integer``    |
    +-------------------+--------------------------------------------------+----------+----------------+
