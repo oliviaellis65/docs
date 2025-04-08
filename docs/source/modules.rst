@@ -20,13 +20,13 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. raw:: html
 
-   Outputs highlighted in <span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.</span>
+   Outputs highlighted in <span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">#A9D069</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.</span>
 
 .. block end 
 
 
 Jump to:
-* :ref:`QC <qc>`
+* :ref:`QC <https://scrna-docs.readthedocs.io/en/latest/modules.html#prep-and-quality-control>`
 * :ref:`Process <process>`
 * :ref:`Annotate <celltypist>`
 * :ref:`Convert <convert>`
@@ -48,7 +48,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight: bold;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
    </p>
 
 .. raw block end 
@@ -78,12 +78,12 @@ Outputs
 .. raw:: html
 
    <ul>
-      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
+      <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_gex.h5ad</span><span style="display:inline; color: black;">: Gene expression H5AD file, combined across all samples. See more on metadata outputs below.</span></li>
       <details style="margin-left: 40px; font-size: 15px;">
             <summary>Metadata</summary>
                all_samples_gex.h5ad contains metadata for QC metrics, including: 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', 'percent_rbc', etc...
       </details>
-      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li>
+      <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">all_samples_csp.h5ad</span><span style="display:inline; color: black;">: Combined CSP H5AD file if CSP data is present.</span></li>
       <li><span style="font-weight: bold;">QC_metrics.xlsx: </span><span style="display:inline;">Provides 5%, 10%, 90%, and 95% values for 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo' across all samples combined.</span></li>
       <li><span style="font-weight: bold;">QC_plot.png: </span><span style="display:inline;">For each sample, shows the distributions of 'nFeature_RNA', 'nCount_RNA', 'percent_mt', 'percent_ribo', and the number of cells.</span></li>
    </ul><br>
@@ -258,6 +258,7 @@ Inputs
 - **umap**   *(optional)*
 
 .. raw:: html
+
    <div style="margin-left: 40px; font-size: 0.85em;">
       <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse;">
          <thead style="background-color: #f2f2f2;">
@@ -283,7 +284,7 @@ Inputs
             </tr>
          </tbody>
       </table>
-   </div><br>
+   </div><br><br>
 
 .. old table
    +-------------+------------------------------------------------------------------+-----------+-----------+
@@ -295,14 +296,13 @@ Inputs
    +-------------+------------------------------------------------------------------+-----------+-----------+
    
    
-
 Outputs
 ^^^^^^^^^
 
 .. raw:: html
 
-   <ul><li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
-   <li><span style="background-color: #A9D069; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
+   <ul><li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
+   <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
    <li><span style="font-weight:bold;">umap_plot.png:</span><span style="display:inline;"> UMAP of cells after batch correction.</span></li>
    <li><span style="font-weight:bold;">process.log:</span><span style="display:inline;"> Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.</span></li></ul>
 
@@ -319,7 +319,7 @@ Annotates cells using `CellTypist <https://www.celltypist.org/>`_.
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
 .. raw block end 
 
 
@@ -342,7 +342,7 @@ Outputs
 .. raw:: html
 
    <ul>
-      <li><span style="background-color: green; color: white; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;">: Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li>
+      <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">annotated_gex.h5ad</span><span style="display:inline;">: Annotated gene expression object. CellTypist labels are stored in the 'cell.type' metadata variable. Used in CONVERT. </span></li>
       <li><span style="font-weight:bold;">cluster_markers.xlsx:</span><span style="display:inline;"> Top markers from each cluster, as defined by the 'leiden' metadata column. Markers are calculated only by cluster, and are agnostic to CellTypist label.</span></li>
       <li><span style="font-weight:bold;">celltypist_markers.xlsx:</span><span style="display:inline;"> Markers from the cluster that were used to assign the CellTypist label.</span></li>  
    </ul>
@@ -357,11 +357,12 @@ CONVERT
    Add support for raw counts, CSP
 
 
-Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool <https://www.bing.com/search?q=cellgeni%20schard%20&qs=n&form=QBRE&sp=-1&lq=0&pq=cellgenischard%20&sc=0-15&sk=&cvid=E5061AD0B4A74611894027B4AA6BF984>`_. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's `subsample function <https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>`_.
+Converts Scanpy objects to Seurat objects using the `cellgeni/schard tool <https://github.com/cellgeni/schard>`_. Retains dimensionality reductions and metadata, and re-combines CSP and GEX assays (if applicable). With current versions, these Seurat objects can only handle matrices with 2^31 elements or less, i.e. around 100k cells. If the input .h5ad object "gex" exceeds 100k cells, it will **automatically** be subsetted to 100k cells using scanpy's `subsample function <https://scanpy.readthedocs.io/en/stable/generated/scanpy.pp.subsample.html>`_.
 
 .. raw:: html
+   
 
-   <p><span style="background-color: #F2F2F2; font-size: 16px; font-family: 'Roboto Slab', serif; color: #4D4D4D; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/scanpy_to_seurat.nf"> scanpy_to_seurat.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/scanpy_to_seurat.py">scanpy_to_seurat.py</a></p>
 .. raw block end 
 
 
