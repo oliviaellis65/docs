@@ -20,7 +20,7 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 .. raw:: html
 
-   Outputs highlighted in <span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">#A9D069</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.</span>
+   Outputs highlighted in <span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">green</span><span style="display:inline;"> are used in subsequent modules, or can be supplied by the user if the current module was bypassed.</span>
 
 .. block end 
 
