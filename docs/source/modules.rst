@@ -26,10 +26,11 @@ Each module is supported by a 'core' python or R script which is *run* by a next
 
 
 Jump to:
-* :ref:`QC <https://scrna-docs.readthedocs.io/en/latest/modules.html#prep-and-quality-control>`
-* :ref:`Process <process>`
-* :ref:`Annotate <celltypist>`
-* :ref:`Convert <convert>`
+
+- :ref:`QC <qc>`
+- :ref:`Process <process>`
+- :ref:`Annotate <celltypist>`
+- :ref:`Convert <convert>`
 
 
 
@@ -48,7 +49,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> : qc_scanpy.py</a>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> qc_scanpy.py</a>
    </p>
 
 .. raw block end 
@@ -114,7 +115,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> : process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
@@ -373,11 +374,10 @@ Inputs
    <ul>
       <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">gex</span><span style="display:inline;">:  Gene expression object, either an output from Process, Annotate, or a user-supplied object with appropriate metadata ?? </span></li>
       <li><span style="font-weight: bold;">csp: </span><span style="display:inline;"> CSP object </span></li>
-   </ul>
+   </ul><br>
 
 .. mycomment
 
-\
 
 Outputs
 ^^^^^^^^^^^
