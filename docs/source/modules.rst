@@ -48,7 +48,7 @@ Concatenates all samples from the provided samplesheet into a single .h5ad file 
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS: </span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py">qc_scanpy.py</a>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/qc_scanpy.nf"> qc_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/qc_scanpy.py"> : qc_scanpy.py</a>
    </p>
 
 .. raw block end 
@@ -114,7 +114,7 @@ Clustering is performed using the batch-corrected matrix from either ScVI or Har
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/process_scanpy.nf"> : process_scanpy.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/process_scanpy.py">process_scanpy.py</a></p>
 .. raw block end 
 
 
@@ -124,7 +124,7 @@ Inputs
 .. raw:: html
 
    <ul>
-      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples</span><span style="display:inline;">:  file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li>
+      <li><span style="background-color: #FFCC00; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;"> all_samples:</span><span style="display:inline;"> file path to an .h5ad object with gene expression data combined for all samples. This can be an output from qc_scanpy.nf, or a user-supplied object (see requirements below).</span></li>
          
       <details style="margin-left: 40px; font-size: 14px;">
          <summary>Requirements</summary>
@@ -301,12 +301,11 @@ Outputs
 
 .. raw:: html
 
-   <ul><li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad</span><span style="display:inline;">: Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
-   <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad</span><span style="display:inline;">: CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
+   <ul><li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_gex.h5ad:</span><span style="display:inline;"> Filtered, batch corrected, clustered GEX object. Used in ANNOTATE and CONVERT. </span></li>
+   <li><span style="background-color: #A9D069; color: black; font-weight:bold; padding: 2px 6px; border-radius: 4px;">filtered_csp.h5ad:</span><span style="display:inline;"> CSP object filtered to the same cells as the GEX object. Not clustered or batch corrected. Used in ANNOTATE and CONVERT. </span></li>
    <li><span style="font-weight:bold;">umap_plot.png:</span><span style="display:inline;"> UMAP of cells after batch correction.</span></li>
-   <li><span style="font-weight:bold;">process.log:</span><span style="display:inline;"> Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.</span></li></ul>
+   <li><span style="font-weight:bold;">process.log:</span><span style="display:inline;"> Log file of output. Other processes' logs are hidden, but because integration is often long and costly, it can be helpful to see how many iterations algorithms take to converge.</span></li></ul><br><br>
 
-\
 
 .. _celltypist:
 
@@ -319,7 +318,7 @@ Annotates cells using `CellTypist <https://www.celltypist.org/>`_.
 
 .. raw:: html
 
-   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
+   <p><span style="background-color: #F2F2F2; font-size: 18px; font-family: 'Roboto Slab', serif; color: #BD0395; font-weight:bold; padding: 2px 6px; border-radius: 4px;">SCRIPTS:</span> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/modules/celltypist_annotate.nf"> celltypist_annotate.nf, </a> <a href="https://github.com/EliLillyCo/nf-ellis-scrnaseq/blob/main/bin/celltypist_annotate.py">celltypist_annotate.py </a></p>
 .. raw block end 
 
 
