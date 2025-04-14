@@ -275,7 +275,7 @@ Inputs
                <td>dimensions</td>
                <td>Number of principle components to use for clustering (1-50)</td>
                <td>30</td>
-               <td><code>string</code></td>
+               <td><code>int</code></td>
             </tr>
             <tr>
                <td>resolution</td>
